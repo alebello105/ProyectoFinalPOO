@@ -1,0 +1,20 @@
+{% extends "trabajos/base_generic.html" %}
+
+{% block title %}Detalle del Trabajo{% endblock %}
+
+{% block content %}
+<h2>{{ trabajo.titulo }}</h2>
+<p><strong>Empresa:</strong> {{ trabajo.empresa.nombre }}</p>
+<p><strong>Ubicación:</strong> {{ trabajo.ubicacion }}</p>
+<p><strong>Descripción:</strong> {{ trabajo.descripcion }}</p>
+<p><strong>Requisitos:</strong> {{ trabajo.requisitos }}</p>
+<p><strong>Tipo de Trabajo:</strong> {{ trabajo.tipo_trabajo.nombre }}</p>
+<p><strong>Fecha de Publicación:</strong> {{ trabajo.fecha_publicacion }}</p>
+
+<h3>Aplicar a este Trabajo</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar Aplicación</button>
+</form>
+{% endblock %}
